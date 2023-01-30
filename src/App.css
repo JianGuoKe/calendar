@@ -1,0 +1,15 @@
+.layout .ant-layout-header,
+.layout .ant-layout-sider,
+.layout .ant-layout {
+  background: #fff !important;
+}
+
+.logo {
+  float: left;
+  width: 31px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background-image: url("/favicon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
