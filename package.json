@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 5174 --open --host",
-    "build": "tsc && vite build --base=https://static.jianguoke.cn/note/ && node ./upCaches.js",
+    "build": "tsc && vite build --base=https://static.jianguoke.cn/calendar/ && node ./upCaches.js",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -16,7 +16,7 @@ function getFiles(dir) {
   }
 }
 getFiles('./dist/assets')
-const assets = ['/', '/index.html'].concat(files.map(k => 'https://static.jianguoke.cn/note/' + k.replace(/\\/g, '/').split('/').slice(1).join('/')))
+const assets = ['/', '/index.html'].concat(files.map(k => 'https://static.jianguoke.cn/calendar/' + k.replace(/\\/g, '/').split('/').slice(1).join('/')))
 console.log(assets)
 // 记录生成的缓存文件
 let sw = fs.readFileSync('./dist/serviceWorker.js', 'utf-8');
