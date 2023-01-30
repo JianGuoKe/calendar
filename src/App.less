@@ -1,15 +1,7 @@
+@color: #ebc33f;
+
 .layout {
   height: 100%;
-
-  .logo {
-    float: left;
-    width: 31px;
-    height: 31px;
-    margin: 16px 24px 16px 0;
-    background-image: url('/favicon.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
 
   .ant-layout-header,
   .ant-layout-sider,
@@ -17,11 +9,53 @@
     background: #fff !important;
   }
 
+  .header {
+    display: flex;
+    padding: 0;
+
+    .title {
+      width: 262px;
+      padding: 0 20px;
+    }
+    .calendartitle {
+      flex: 1;
+      display: flex;
+      padding: 16px 0px;
+
+      .daytitle {
+        flex: 1;
+        height: 32px;
+        line-height: 32px;
+        font-size: large;
+        font-weight: 500;
+        margin: 0 10px;
+        padding: 0;
+      }
+
+      > button {
+        margin: 0 5px;
+        :first-child {
+          margin-left: 0;
+        }
+        :last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
   .body {
     flex: 1;
 
     .ant-picker-calendar {
       margin: 5px;
+      .ant-picker-panel {
+        border-top: #fff;
+      }
+
+      .datetitle {
+        margin: 0 10px;
+      }
     }
 
     .addevent {
@@ -30,6 +64,39 @@
 
     .calendar {
       flex: 1;
+
+      .rbc-header {
+        border-bottom: #fff;
+        color: #70757a;
+        font-weight: 400;
+      }
+
+      .rbc-date-cell {
+        text-align: center;
+        padding: 2px 0;
+        &.rbc-now {
+          .rbc-button-link {
+            height: 24px;
+            line-height: 24px;
+            width: 24px;
+            color: #fff;
+            border-radius: 50%;
+            background-color: @color;
+          }
+        }
+      }
+
+      .rbc-today {
+        background-color: #fff;
+      }
+
+      .rbc-event {
+        background-color: #0b8043;
+      }
+
+      .rbc-show-more {
+        color: @color;
+      }
     }
   }
 }
