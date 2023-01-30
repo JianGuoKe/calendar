@@ -1,6 +1,10 @@
 import { FC, useState } from 'react';
-import { Button, Layout } from 'antd';
-import { Calendar, dateFnsLocalizer, Event } from 'react-big-calendar';
+import { Button, Calendar, Collapse, Layout } from 'antd';
+import {
+  Calendar as BigCalendar,
+  dateFnsLocalizer,
+  Event,
+} from 'react-big-calendar';
 import withDragAndDrop, {
   withDragAndDropProps,
 } from 'react-big-calendar/lib/addons/dragAndDrop';
@@ -14,13 +18,14 @@ import startOfHour from 'date-fns/startOfHour';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { DesktopOutlined } from '@ant-design/icons';
-import './App.css';
+import { CaretRightOutlined, DesktopOutlined } from '@ant-design/icons';
+import './App.less';
 
 const { Header, Content, Sider } = Layout;
+const { Panel } = Collapse;
 
 //@ts-ignore
-const DnDCalendar = withDragAndDrop(Calendar);
+const DnDCalendar = withDragAndDrop(BigCalendar);
 
 const locales = {
   'zh-CN': zhCN,
@@ -86,6 +91,17 @@ const App: FC = () => {
     console.log(data);
   };
 
+  const panelStyle = {
+    marginBottom: 24,
+    border: 'none',
+  };
+
+  const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
   return (
     <Layout className="layout">
       <Header className="header">
@@ -97,9 +113,43 @@ const App: FC = () => {
           onClick={() => addToDesktop()}
         ></Button>
       </Header>
-      <Layout>
-        <Sider width={200}></Sider>
+      <Layout className="body">
+        <Sider width={262}>
+          <Button className="addevent" type="primary">
+            Primary Button
+          </Button>
+          <Calendar
+            fullscreen={false}
+            headerRender={({ value, type, onChange, onTypeChange }) => {
+              const year = value.year();
+              const month = value.month();
+              return (
+                <div>
+                  {year}年{month + 1}月
+                </div>
+              );
+            }}
+          />
+          <Collapse
+            bordered={false}
+            defaultActiveKey={['1']}
+            expandIcon={({ isActive }) => (
+              <CaretRightOutlined rotate={isActive ? 90 : 0} />
+            )}
+          >
+            <Panel header="This is panel header 1" key="1" style={panelStyle}>
+              <p>{text}</p>
+            </Panel>
+            <Panel header="This is panel header 2" key="2" style={panelStyle}>
+              <p>{text}</p>
+            </Panel>
+            <Panel header="This is panel header 3" key="3" style={panelStyle}>
+              <p>{text}</p>
+            </Panel>
+          </Collapse>
+        </Sider>
         <DnDCalendar
+          className="calendar"
           defaultView="month"
           events={events}
           localizer={localizer}
@@ -107,7 +157,6 @@ const App: FC = () => {
           onEventDrop={onEventDrop}
           onEventResize={onEventResize}
           resizable
-          style={{ height: '100vh', width: '100vw' }}
         />
       </Layout>
     </Layout>
