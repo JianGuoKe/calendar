@@ -5,6 +5,7 @@ import App from './App';
 import './index.less';
 import 'dayjs/locale/zh-cn';
 import locale from 'antd/locale/zh_CN';
+import './tracker';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
