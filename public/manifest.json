@@ -1,6 +1,6 @@
 {
-  "name": "坚果壳日历",
-  "short_name": "日历",
+  "name": "日历",
+  "short_name": "日历 | 坚果壳",
   "display": "standalone",
   "background_color": "#fff",
   "description": "一个去中心化的日历",
